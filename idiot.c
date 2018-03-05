@@ -23,9 +23,9 @@ void main(void) {
 	PPU_MASK = 0;
 	
 	//load your ugly palette so you can see some gray
-	PPU_ADDRESS = 0x3f //now you have an address in your PP unit
-	PPU_ADDRESS = 0x00 //tbh my iq isn't high enough to know why these do anything
-	//it's a two bite address sent as high than low, little endian iirc
+	PPU_ADDRESS = 0x3f; //now you have an address in your PP unit
+	PPU_ADDRESS = 0x00; //tbh my iq isn't high enough to know why these do anything
+	//it's a two byte address sent as high than low, little endian iirc
 	//for loop now, I guess?
 	for(index = 0; index < sizeof(PALETTE); ++index) {
 		PPU_DATA = PALETTE[index];
@@ -36,8 +36,8 @@ void main(void) {
 	PPU_ADDRESS = 0x21; //little endian again
 	PPU_ADDRESS = 0xca; //we finna put it at the middle of the screen
 	//now it's for loop time again
-	for(index = 0; index < sizeof(TEXT); ++index) {
-		PPU_DATA = TEXT[index];
+	for(index = 0; index < sizeof(STORY_BRIEFING); ++index) {
+		PPU_DATA = STORY_BRIEFING[index];
 	}
 	
 	//that messes up scroll because of autoincrement
