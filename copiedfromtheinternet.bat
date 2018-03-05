@@ -1,5 +1,7 @@
-cc65 -Oi idiot.c --add-source
-ca65 reset.s
-ca65 idiot.s
-ld65 -C nes.cfg -o idiot.s reset.o nes.lib
-@REM del *.o
+@echo off
+cc65 -Oi idiot.c --add-source -v
+ca65 idiot.s -v
+ca65 reset.s -v
+ld65 -C nes.cfg --obj idiot.o reset.o nes.lib -o asdf.nes -v
+del *.o
+pause
